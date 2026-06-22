@@ -1,0 +1,63 @@
+# Debug Dazzle configuration
+# Replace url and google_analytics_id before publishing.
+
+title: "Debug Dazzle"
+tagline: "Personal thoughts, technical notes, and software engineering articles."
+description: "A minimal, clean, article-first personal and technical blog."
+url: "https://debugdazzle.tech"
+baseurl: ""
+lang: "en"
+timezone: "Africa/Lusaka"
+
+# Author information
+author:
+  name: "Suwilanji Silwamba"
+  email: ""
+  bio: "Software engineer, problem solver, and lifelong learner."
+  github: ""
+  linkedin: ""
+  twitter: ""
+
+# Analytics
+# Example: G-XXXXXXXXXX
+# Leave empty to disable analytics.
+google_analytics_id: "G-K4QFEC8VK4"
+
+# Blog settings
+permalink: /articles/:title/
+future: false
+show_excerpts: true
+words_per_minute: 200
+
+# Category order used in navigation and category cards
+category_order:
+  - Technical
+  - Projects
+  - Personal
+  - Learning
+
+# Theme and build plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+sass:
+  style: compressed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - package.json
+  - package-lock.json

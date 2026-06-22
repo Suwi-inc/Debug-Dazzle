@@ -1,0 +1,26 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+      <span class="brand-text">{{ site.title }}</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" aria-label="Main navigation" data-site-nav>
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}aria-current="page"{% endif %}>Home</a>
+      <a href="{{ '/categories/' | relative_url }}" {% if page.url contains '/categories' or page.url contains '/category/' %}aria-current="page"{% endif %}>Categories</a>
+      <a href="{{ '/archive/' | relative_url }}" {% if page.url contains '/archive' %}aria-current="page"{% endif %}>Archive</a>
+      <a href="{{ '/about/' | relative_url }}" {% if page.url contains '/about' %}aria-current="page"{% endif %}>About</a>
+      <button class="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme" data-theme-toggle>
+        <span class="sun" aria-hidden="true">☀</span>
+        <span class="toggle-track" aria-hidden="true"><span class="toggle-thumb"></span></span>
+        <span class="moon" aria-hidden="true">☾</span>
+      </button>
+    </nav>
+  </div>
+</header>

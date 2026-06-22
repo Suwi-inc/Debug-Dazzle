@@ -1,0 +1,48 @@
+---
+layout: default
+title: Home
+description: "Personal thoughts, technical notes, and software engineering articles."
+---
+<div class="home pattern-bg">
+  <div class="container narrow">
+    <header class="home-intro">
+      <p>{{ site.tagline }}</p>
+    </header>
+
+    {% assign featured_posts = site.posts | where: "featured", true %}
+    {% assign featured_url = "" %}
+    {% if featured_posts.size > 0 %}
+      {% assign post = featured_posts.first %}
+      {% assign featured_url = post.url %}
+      <p class="feed-label">Featured</p>
+      <article class="post-card feature-card">
+        <div class="post-card-body">
+          <div class="post-card-meta">
+            {% if post.category %}<a class="badge" href="{{ '/category/' | append: post.category | downcase | append: '/' | relative_url }}">{{ post.category }}</a>{% endif %}
+            <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+            <span>•</span>
+            {% assign words = post.content | number_of_words %}
+            {% assign minutes = words | divided_by: site.words_per_minute | plus: 1 %}
+            <span>{{ minutes }} min read</span>
+          </div>
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <p>{{ post.description | default: post.excerpt | strip_html | truncate: 200 }}</p>
+          <a class="read-more" href="{{ post.url | relative_url }}">Read more →</a>
+        </div>
+      </article>
+    {% endif %}
+
+    <div class="feed-head">
+      <p class="feed-label">Latest articles</p>
+      <a class="text-link" href="{{ '/archive/' | relative_url }}">View archive →</a>
+    </div>
+
+    <div class="home-feed">
+      {% for post in site.posts %}
+        {% unless post.url == featured_url %}
+          {% include post-card.html %}
+        {% endunless %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

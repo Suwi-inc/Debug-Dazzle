@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<section class="page-section pattern-bg">
+  <div class="container narrow">
+    <header class="page-header">
+      <p class="eyebrow">Category</p>
+      <h1>{{ page.category }}</h1>
+      {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+    </header>
+
+    {% assign category_posts = site.posts | where: "category", page.category %}
+    <div class="home-feed">
+      {% for post in category_posts %}
+        {% include post-card.html %}
+      {% else %}
+        <p>No articles in this category yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

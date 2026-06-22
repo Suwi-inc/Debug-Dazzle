@@ -1,0 +1,64 @@
+---
+layout: default
+---
+<article class="post-page pattern-bg">
+  <div class="container narrow">
+    <a class="back-link" href="{{ '/' | relative_url }}">← Back to home</a>
+    <header class="post-header">
+      {% if page.category %}<a class="badge" href="{{ '/category/' | append: page.category | downcase | append: '/' | relative_url }}">{{ page.category }}</a>{% endif %}
+      <h1>{{ page.title }}</h1>
+      <div class="post-meta">
+        <span>{{ page.date | date: "%B %-d, %Y" }}</span>
+        <span>•</span>
+        {% assign words = content | number_of_words %}
+        {% assign minutes = words | divided_by: site.words_per_minute | plus: 1 %}
+        <span>{{ minutes }} min read</span>
+      </div>
+      {% if page.description %}<p class="post-description">{{ page.description }}</p>{% endif %}
+      {% if page.image %}
+        <img class="post-hero-image" src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: page.title }}">
+      {% endif %}
+    </header>
+
+    <div class="toc-card" data-toc-card hidden>
+      <h2>On this page</h2>
+      <nav data-toc-list></nav>
+    </div>
+
+    <div class="prose article-content" data-article-content>
+      {{ content }}
+    </div>
+
+    {% if page.tags and page.tags.size > 0 %}
+      <footer class="post-tags" aria-label="Post tags">
+        {% for tag in page.tags %}
+          <span>#{{ tag }}</span>
+        {% endfor %}
+      </footer>
+    {% endif %}
+
+    {% if page.comments %}
+      {% include comments.html %}
+    {% endif %}
+
+    {% assign related_posts = site.posts | where: "category", page.category %}
+    {% assign related_count = 0 %}
+    {% for post in related_posts %}
+      {% if post.url != page.url %}{% assign related_count = related_count | plus: 1 %}{% endif %}
+    {% endfor %}
+    {% if related_count > 0 %}
+      <section class="related-posts" aria-label="Related posts">
+        <h2>Related articles</h2>
+        <div class="home-feed">
+          {% assign shown = 0 %}
+          {% for post in related_posts %}
+            {% if post.url != page.url and shown < 2 %}
+              {% include post-card.html %}
+              {% assign shown = shown | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+  </div>
+</article>
