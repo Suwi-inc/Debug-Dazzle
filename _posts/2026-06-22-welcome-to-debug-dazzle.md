@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Welcome to Debug Dazzle"
-date: 2026-06-18
+date: 2026-06-22
 category: Personal
 tags: [blogging, writing, software-engineering]
 description: "A short introduction to the purpose and direction of Debug Dazzle."

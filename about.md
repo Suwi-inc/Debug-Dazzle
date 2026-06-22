@@ -26,7 +26,7 @@ eyebrow: Author
 </div>
 
 <figure class="about-avatar">
-  <img src="{{ '/assets/img/about.png' | relative_url }}" alt="Portrait of {{ site.author.name | default: site.title }}">
+  <img src="{{ '/assets/img/About.png' | relative_url }}" alt="Portrait of {{ site.author.name | default: site.title }}">
   <figcaption>{{ site.author.name | default: site.title }}</figcaption>
 </figure>
 
